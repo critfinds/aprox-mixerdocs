@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import {
@@ -16,7 +16,7 @@ import {
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/aprox-logo.png";
 
 interface NavItem {
   title: string;
@@ -116,7 +116,7 @@ export function DocSidebar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   // Auto-expand sections based on current route
-  const getExpandedFromRoute = () => {
+  const getExpandedFromRoute = useCallback(() => {
     const expanded: string[] = [];
     navItems.forEach((item) => {
       const basePath = item.href.split("#")[0] || "/";
@@ -128,7 +128,7 @@ export function DocSidebar() {
       }
     });
     return expanded.length > 0 ? expanded : ["Introduction"];
-  };
+  }, [location.pathname]);
 
   const [expandedItems, setExpandedItems] = useState<string[]>(getExpandedFromRoute);
 
@@ -139,7 +139,7 @@ export function DocSidebar() {
       const merged = [...new Set([...prev, ...newExpanded])];
       return merged;
     });
-  }, [location.pathname]);
+  }, [getExpandedFromRoute]);
 
   // Scroll to hash on location change
   useEffect(() => {
