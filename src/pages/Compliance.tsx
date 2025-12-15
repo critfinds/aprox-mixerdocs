@@ -1,7 +1,7 @@
 import { DocLayout } from "@/components/layout/DocLayout";
 import { InfoBox } from "@/components/docs/InfoBox";
 import { SectionHeader } from "@/components/docs/SectionHeader";
-import { Shield, Database, Server, Scale } from "lucide-react";
+import { Shield, Database, Server, Scale, CheckCircle, XCircle } from "lucide-react";
 
 const Compliance = () => {
   return (
@@ -46,19 +46,19 @@ const Compliance = () => {
               <h4 className="font-semibold mb-3">What AproxMixer Controls</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-start gap-2">
-                  <span className="text-primary">✗</span>
+                  <XCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                   <span>Cannot access deposited funds</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary">✗</span>
+                  <XCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                   <span>Cannot freeze or confiscate assets</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary">✗</span>
+                  <XCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                   <span>Cannot block withdrawals</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary">✗</span>
+                  <XCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                   <span>Cannot identify depositors</span>
                 </li>
               </ul>
@@ -67,19 +67,19 @@ const Compliance = () => {
               <h4 className="font-semibold mb-3">What Users Control</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-start gap-2">
-                  <span className="text-green-500">✓</span>
+                  <CheckCircle className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
                   <span>Full custody of secret notes</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-green-500">✓</span>
+                  <CheckCircle className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
                   <span>Exclusive withdrawal rights</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-green-500">✓</span>
+                  <CheckCircle className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
                   <span>Choice of recipient address</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-green-500">✓</span>
+                  <CheckCircle className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
                   <span>Decision to use relayers</span>
                 </li>
               </ul>
@@ -115,7 +115,7 @@ const Compliance = () => {
             <h4 className="font-semibold mb-4">Data Practices</h4>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-xs text-green-500 shrink-0">✓</span>
+                <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-medium">No PII Collection</span>
                   <p className="text-sm text-muted-foreground">
@@ -124,7 +124,7 @@ const Compliance = () => {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-xs text-green-500 shrink-0">✓</span>
+                <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-medium">No IP Logging</span>
                   <p className="text-sm text-muted-foreground">
@@ -133,7 +133,7 @@ const Compliance = () => {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-xs text-green-500 shrink-0">✓</span>
+                <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-medium">No Analytics Tracking</span>
                   <p className="text-sm text-muted-foreground">
@@ -142,7 +142,7 @@ const Compliance = () => {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-xs text-green-500 shrink-0">✓</span>
+                <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-medium">On-chain Data Only</span>
                   <p className="text-sm text-muted-foreground">

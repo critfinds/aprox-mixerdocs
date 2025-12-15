@@ -2,7 +2,7 @@ import { DocLayout } from "@/components/layout/DocLayout";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { InfoBox } from "@/components/docs/InfoBox";
 import { SectionHeader } from "@/components/docs/SectionHeader";
-import { Shield, Lock, Eye, CheckCircle } from "lucide-react";
+import { Shield, Lock, Eye, CheckCircle, Circle } from "lucide-react";
 
 const ZkProofs = () => {
   return (
@@ -206,23 +206,23 @@ I'm proving this without revealing secret, nullifier, or which leaf is mine."`}
             </p>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-start gap-2">
-                <span className="text-green-500">✓</span>
+                <CheckCircle className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
                 <span><strong className="text-foreground">Hidden:</strong> Which deposit is being withdrawn</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-green-500">✓</span>
+                <CheckCircle className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
                 <span><strong className="text-foreground">Hidden:</strong> Depositor's identity</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-green-500">✓</span>
+                <CheckCircle className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
                 <span><strong className="text-foreground">Hidden:</strong> Link between deposit and withdrawal addresses</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-muted-foreground">○</span>
+                <Circle className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
                 <span><strong className="text-foreground">Public:</strong> Deposit/withdrawal amounts (fixed denominations)</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-muted-foreground">○</span>
+                <Circle className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
                 <span><strong className="text-foreground">Public:</strong> Recipient address, relayer, fee</span>
               </li>
             </ul>
