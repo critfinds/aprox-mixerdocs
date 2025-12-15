@@ -16,6 +16,7 @@ import {
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 interface NavItem {
   title: string;
@@ -191,8 +192,8 @@ export function DocSidebar() {
       {/* Logo */}
       <div className="p-6 border-b border-sidebar-border">
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center glow-effect-sm group-hover:glow-effect transition-all duration-300">
-            <Shield className="w-5 h-5 text-primary-foreground" />
+          <div className="w-10 h-10 rounded-lg overflow-hidden glow-effect-sm group-hover:glow-effect transition-all duration-300">
+            <img src={logo} alt="AproxMixer Logo" className="w-full h-full object-cover" />
           </div>
           <div>
             <h1 className="text-lg font-bold gradient-text">AproxMixer</h1>
