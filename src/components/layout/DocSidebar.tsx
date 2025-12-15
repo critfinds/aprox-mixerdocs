@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import {
   Book,
@@ -111,8 +111,38 @@ const navItems: NavItem[] = [
 
 export function DocSidebar() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [expandedItems, setExpandedItems] = useState<string[]>(["Introduction"]);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  // Scroll to hash on location change
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+      }
+    }
+  }, [location]);
+
+  const handleNavClick = (href: string) => {
+    setIsMobileOpen(false);
+    const [path, hash] = href.split("#");
+    
+    // If we're already on the same page, just scroll to the element
+    if (path === location.pathname || (path === "/" && location.pathname === "/")) {
+      if (hash) {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+    } else {
+      navigate(href);
+    }
+  };
 
   const toggleExpanded = (title: string) => {
     setExpandedItems((prev) =>
@@ -185,18 +215,17 @@ export function DocSidebar() {
                   <ul className="mt-1 ml-7 space-y-1 border-l border-sidebar-border pl-3">
                     {item.children.map((child) => (
                       <li key={child.href}>
-                        <Link
-                          to={child.href}
-                          onClick={() => setIsMobileOpen(false)}
+                        <button
+                          onClick={() => handleNavClick(child.href)}
                           className={cn(
-                            "block px-3 py-1.5 text-sm rounded-md transition-colors duration-200",
+                            "block w-full text-left px-3 py-1.5 text-sm rounded-md transition-colors duration-200",
                             location.pathname + location.hash === child.href
                               ? "text-primary font-medium"
                               : "text-muted-foreground hover:text-foreground"
                           )}
                         >
                           {child.title}
-                        </Link>
+                        </button>
                       </li>
                     ))}
                   </ul>
