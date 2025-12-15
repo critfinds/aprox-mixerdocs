@@ -112,8 +112,33 @@ const navItems: NavItem[] = [
 export function DocSidebar() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [expandedItems, setExpandedItems] = useState<string[]>(["Introduction"]);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  // Auto-expand sections based on current route
+  const getExpandedFromRoute = () => {
+    const expanded: string[] = [];
+    navItems.forEach((item) => {
+      const basePath = item.href.split("#")[0] || "/";
+      if (location.pathname === basePath || location.pathname.startsWith(basePath) && basePath !== "/") {
+        expanded.push(item.title);
+      }
+      if (basePath === "/" && location.pathname === "/") {
+        expanded.push(item.title);
+      }
+    });
+    return expanded.length > 0 ? expanded : ["Introduction"];
+  };
+
+  const [expandedItems, setExpandedItems] = useState<string[]>(getExpandedFromRoute);
+
+  // Update expanded items when route changes
+  useEffect(() => {
+    const newExpanded = getExpandedFromRoute();
+    setExpandedItems((prev) => {
+      const merged = [...new Set([...prev, ...newExpanded])];
+      return merged;
+    });
+  }, [location.pathname]);
 
   // Scroll to hash on location change
   useEffect(() => {
