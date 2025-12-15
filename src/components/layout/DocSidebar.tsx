@@ -130,17 +130,21 @@ export function DocSidebar() {
   const handleNavClick = (href: string) => {
     setIsMobileOpen(false);
     const [path, hash] = href.split("#");
+    const targetPath = path || location.pathname;
     
-    // If we're already on the same page, just scroll to the element
-    if (path === location.pathname || (path === "/" && location.pathname === "/")) {
+    // Always navigate to update the URL (including hash)
+    navigate(href);
+    
+    // If we're already on the same page, scroll to the element
+    if (targetPath === location.pathname || (path === "/" && location.pathname === "/") || path === "") {
       if (hash) {
-        const element = document.getElementById(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 50);
       }
-    } else {
-      navigate(href);
     }
   };
 
@@ -218,10 +222,10 @@ export function DocSidebar() {
                         <button
                           onClick={() => handleNavClick(child.href)}
                           className={cn(
-                            "block w-full text-left px-3 py-1.5 text-sm rounded-md transition-colors duration-200",
+                            "block w-full text-left px-3 py-1.5 text-sm rounded-md transition-all duration-200",
                             location.pathname + location.hash === child.href
-                              ? "text-primary font-medium"
-                              : "text-muted-foreground hover:text-foreground"
+                              ? "text-primary font-medium bg-primary/10 border-l-2 border-primary -ml-[2px] pl-[14px]"
+                              : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                           )}
                         >
                           {child.title}
