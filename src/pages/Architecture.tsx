@@ -151,7 +151,7 @@ contract Verifier {
                 <h5 className="font-medium mb-2">Core Framework</h5>
                 <ul className="text-sm text-muted-foreground space-y-1">
                   <li>• React 18 with TypeScript</li>
-                  <li>• Vite for fast development</li>
+                  <li>• Next.js for fast development</li>
                   <li>• React Router for navigation</li>
                 </ul>
               </div>
